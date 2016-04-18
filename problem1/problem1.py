@@ -33,9 +33,9 @@ All the tests are placed in the test_problem1.py file.
 
 Assumptions:
 ================
-- If a string does not contain a number that preceeds text, it'll be placed after all 'numbered' strings in the sorted
+- If a string does not contain a number that precedes text, it'll be placed after all 'numbered' strings in the sorted
 output file, sorted alphabetically with other strings without a number;
-- A 'numbered' string may or may not contain a separator between the preceeding number and the rest of the string:
+- A 'numbered' string may or may not contain a separator between the preceding number and the rest of the string:
 “10 Chicken Wings”, “343GuiltySparks”;
 - Accordingly with the previous statement and due to the lack of clearance how a separator (if any) between two parts
 of a string should be treated, and what kinds of separators to expect, the 'text' part of the string will be starting
@@ -57,7 +57,7 @@ def read_input(filename):
     This function reads the input from the text file into a dictionary that has string numbers as keys,
     and a list of (text_start_index, original_string) tuples as values. Example:
     { 10: [(2, '10 Chicken Wings'), ... ] }
-    Returns None if something went wrong, printing the error descripton into stdout.
+    Returns None if something went wrong, printing the error description into stdout.
     :param filename: the name of the file to read
     :return: list of tuples if everything went well, None otherwise
     """
@@ -97,7 +97,7 @@ def read_input(filename):
 
 def process_data(items):
     """
-    This function processes the data dicitionary (items) into a sorted list of original string values.
+    This function processes the data dictionary (items) into a sorted list of original string values.
     :param items: the dictionary of a format: { 10: [(2, '10 Chicken Wings'), ... ] }
     :return: a sorted list with original string values, None if something went wrong and prints the error into stdout
     """

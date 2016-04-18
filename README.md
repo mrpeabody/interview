@@ -57,4 +57,43 @@ contain a number);
 * number is assumed to be integer.
 
 
+---
 
+## mySidewalk: Coding assignment #2
+
+
+### Task description
+The user wants a responsive web interface to see a particular comment from the mySidewalk engagement comments API.
+Load the comment with ID 100 (https://mysidewalk.com/api/engagement/v1/comments/100.json) from the API,
+redirect the window’s location to a path that represents a human friendly portion of the comment, and display
+the comment in a device response and visually pleasing manner.
+
+
+### Solution description
+The solution is built using Flask web framework + Python3 (3.5.1) and its standard library.
+The following solution works as a standalone web app.
+Web stack only includes HTML5 and CSS3, no frameworks or libraries required.
+
+
+### Installation
+
+    pip3 install -r requirements.txt
+
+
+##### Usage example:
+
+Start the app:
+
+    python3 problem2
+
+Access it in a browser:
+
+    http://127.0.0.1:5000/comment/<comment_id>
+   *<comment_id> might be replaced with an actual id, say 100*
+
+
+All the tests are placed in the test_problem2.py file under the __tests__ directory:
+
+    python3 -m unittest test_problem2
+
+---

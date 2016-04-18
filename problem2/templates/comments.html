@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/comments.css') }}">
+</head>
+<body>
+
+
+    {% for comment, author, media in comments %}
+
+        <div class="comment">
+            <div class="author-avatar"><img src="{{ media.url }}" alt="{{ media.description }}"></div>
+
+            <div class="author-name">
+                {{ author.firstName }} {{ author.lastName }}
+                {% if author.isSuperuser %}<div class="label admin">Admin</div>{% endif %}
+            </div>
+
+            <div class="comment-created">On {{ comment.createdAt | format_date }}</div>
+            <div class="clear"></div>
+
+            <div class="comment-text">{{ comment.text }}</div>
+        </div>
+
+    {% endfor %}
+
+
+</body>
+</html>
