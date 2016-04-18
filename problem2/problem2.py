@@ -1,8 +1,10 @@
-from flask import Flask, url_for
-from flask import render_template, redirect
+from flask import Flask
+from flask import render_template
 from flask import abort
+from werkzeug.exceptions import NotFound
 import requests
 import dateutil.parser
+
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -15,7 +17,7 @@ def comment(comment_id=None):
     :return:
     """
     if comment_id is None:
-        abort(404)
+        raise NotFound()
 
     try:
         # load comments from API
@@ -23,12 +25,19 @@ def comment(comment_id=None):
             'https://mysidewalk.com/api/engagement/v1/comments/{comment_id}.json'.format(comment_id=comment_id)
         ).json()
 
+        # check if the comment not found
+        if comment_info.get('results', {}).get('status', 0) == 404:
+            raise NotFound()
+
         # assuming that the comments list and the users list correspond, render comments
         return render_template('comments.html', comments=zip(
             comment_info['comments'],
             comment_info['linked']['users'],
             comment_info['linked']['medias']
         ))
+    except NotFound as e:
+        print(e)
+        abort(404)
     except Exception as e:
         print(e)
         abort(400)
